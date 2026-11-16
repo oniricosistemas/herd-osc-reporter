@@ -76,14 +76,19 @@ def hc_json(*args: str):
 
 
 def classify(agent, screen: str):
+    """Match the agent's TUI status strings, restricted to the bottom of the
+    screen (status bar and dialogs live there; transcript text higher up may
+    contain trigger words and cause false states)."""
+    lines = [l for l in screen.splitlines() if l.strip()]
+    bottom = "\n".join(lines[-12:])
     for rx in agent["_working"]:
-        if rx.search(screen):
+        if rx.search(bottom):
             return "working"
     for rx in agent["_blocked"]:
-        if rx.search(screen):
+        if rx.search(bottom):
             return "blocked"
     for rx in agent["_idle"]:
-        if rx.search(screen):
+        if rx.search(bottom):
             return "idle"
     return None
 

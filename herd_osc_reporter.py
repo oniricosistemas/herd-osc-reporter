@@ -92,6 +92,8 @@ def classify(agent, screen: str):
     for rx in agent["_working"]:
         if rx.search(bottom):
             return "working"
+    if "type to redirect this turn" in bottom and "Processes" in bottom:
+        return "idle"  # background processes keep turn chrome with no active turn
     for rx in agent["_idle"]:
         if rx.search(bottom):
             return "idle"

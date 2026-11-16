@@ -84,3 +84,7 @@ is a user-space bridge while first-class support lands.
 ## License
 
 MIT
+
+## Upstream
+
+Findings and workaround filed as [herdrdev/herdr#6024](https://github.com/herdrdev/herdr/issues/6024).

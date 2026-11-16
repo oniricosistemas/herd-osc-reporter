@@ -1,0 +1,24 @@
+{
+  "poll_seconds": 2.0,
+  "keepalive_seconds": 30,
+  "hc_bin": "herdr-core",
+  "log_path": "~/.local/state/herd-osc-reporter/log",
+  "agents": {
+    "hermes": {
+      "match": ["hermes"],
+      "working": ["Working\u2026|enter interrupt|type to redirect this turn|\u23f1"],
+      "blocked": ["approve|allow once|don't ask again|permiso requerido|waiting for approval"],
+      "idle": ["Ask anything, or type / for commands|\u23f2"],
+      "session_title": {
+        "log": "~/.hermes/logs/agent.log",
+        "ts_regex": "^(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}),\\d+ INFO gateway\\.run: inbound message: platform=local .*?chat=",
+        "id_regex": "inbound message: platform=local .*?chat=(local-[0-9a-f]{16,})",
+        "ts_format": "%Y-%m-%d %H:%M:%S",
+        "ts_utc": true,
+        "db": "~/.hermes/state.db",
+        "query": "SELECT title FROM sessions WHERE id = ? AND archived = 0",
+        "refresh_seconds": 15
+      }
+    }
+  }
+}

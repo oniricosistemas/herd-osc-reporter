@@ -5,10 +5,18 @@
   "log_path": "~/.local/state/herd-osc-reporter/log",
   "agents": {
     "hermes": {
-      "match": ["hermes"],
-      "working": ["Working\u2026|enter interrupt|type to redirect this turn|\u23f1"],
-      "blocked": ["approve|allow once|don't ask again|permiso requerido|waiting for approval"],
-      "idle": ["Ask anything, or type / for commands|\u23f2"],
+      "match": [
+        "hermes"
+      ],
+      "working": [
+        "Working…|enter interrupt|type to redirect this turn|⏱"
+      ],
+      "blocked": [
+        "Approval needed|Input needed|Hermes is waiting for your response"
+      ],
+      "idle": [
+        "Ask anything, or type / for commands|⏲"
+      ],
       "session_title": {
         "log": "~/.hermes/logs/agent.log",
         "ts_regex": "^(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}),\\d+ INFO gateway\\.run: inbound message: platform=local .*?chat=",

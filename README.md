@@ -71,7 +71,8 @@ See `config.example.json`. Per agent:
 - OSC 7501 also accepts `done` and `error` states, and blocked dialogs can carry
   a `kind` (permission/question/auth) — this reporter currently maps to
   working/idle/blocked only.
-- The `blocked` patterns are best-effort; check your agent's approval dialog text.
+- `blocked` patterns must be the agent's own dialog markers (e.g. for Hermes:
+  the literal `Approval needed` title). They are checked before `working`.
 - Does not require patching herdr-core or the desktop app.
 
 ## Why not upstream?
